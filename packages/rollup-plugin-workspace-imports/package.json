@@ -26,5 +26,8 @@
 	"dependencies": {
 		"find-up": "^6.3.0",
 		"tsconfig-paths": "^4.1.0"
+	},
+	"publishConfig": {
+		"directory": "dist"
 	}
 }
