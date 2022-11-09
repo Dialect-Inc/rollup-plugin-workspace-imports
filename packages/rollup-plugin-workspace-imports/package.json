@@ -1,0 +1,30 @@
+{
+	"name": "rollup-plugin-workspace-imports",
+	"version": "0.0.0",
+	"description": "Rollup plugin for workspace imports.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Dialect-Inc/rollup-plugin-workspace-imports.git"
+	},
+	"homepage": "https://github.com/Dialect-Inc/rollup-plugin-workspace-imports#readme",
+	"author": {
+		"name": "Leon Si",
+		"email": "leon@leondreamed.com",
+		"url": "https://leondreamed.com"
+	},
+	"type": "module",
+	"exports": "./src/index.ts",
+	"scripts": {
+		"build": "ts-node ./scripts/build.ts",
+		"start": "ts-node ./src/index.ts"
+	},
+	"devDependencies": {
+		"execa": "^6.1.0",
+		"vitest": "latest"
+	},
+	"dependencies": {
+		"find-up": "^6.3.0",
+		"tsconfig-paths": "^4.1.0"
+	}
+}

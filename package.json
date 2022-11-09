@@ -1,0 +1,11 @@
+{
+	"name": "@rollup-plugin-workspace-imports/monorepo",
+	"scripts": {
+		"build": "pnpm recursive run build"
+	},
+	"devDependencies": {
+		"@types/node": "^18.11.9",
+		"lionconfig": "^1.8.16",
+		"typescript": "^4.8.4"
+	}
+}
