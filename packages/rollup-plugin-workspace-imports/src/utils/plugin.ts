@@ -28,12 +28,20 @@ export function workspaceImports() {
 				matchPath = tsConfigPaths.createMatchPath(absoluteBaseUrl, paths)
 			}
 
+			let matchedPath: string | undefined;
 			if (importee.endsWith('.js')) {
 				importee = importee.slice(0, Math.max(0, importee.length - 3))
+				matchedPath = matchPath(`${importee}.ts`)
+			} else if (importee.endsWith('.jsx')) {
+				importee = importee.slice(0, Math.max(0, importee.length - 4))
+				matchedPath = matchPath(`${importee}.tsx`)
+			} else if (importee.endsWith('.cjs')) {
+				importee = importee.slice(0, Math.max(0, importee.length - 4))
+				matchedPath = matchPath(`${importee}.cts`)
+			} else if (importee.endsWith('.mjs')) {
+				importee = importee.slice(0, Math.max(0, importee.length - 4))
+				matchedPath = matchPath(`${importee}.mts`)
 			}
-
-			// TODO: fix hardcoded extension
-			const matchedPath = matchPath(`${importee}.ts`)
 
 			if (matchedPath !== undefined) {
 				return matchedPath
