@@ -1,1 +1,1 @@
-export { workspaceImports } from './utils/plugin.js';
+export { workspaceImports as default } from './utils/plugin.js';
