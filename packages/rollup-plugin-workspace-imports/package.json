@@ -1,6 +1,6 @@
 {
 	"name": "rollup-plugin-workspace-imports",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Rollup plugin for workspace imports.",
 	"license": "MIT",
 	"repository": {
