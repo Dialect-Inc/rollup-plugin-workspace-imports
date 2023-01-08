@@ -28,19 +28,34 @@ export function workspaceImports() {
 				}
 
 				let matchedPath: string | undefined
+				// If the import has an extension, we need to resolve imports with an explicit extension since they're required in an ESM environment
 				if (importee.endsWith('.js')) {
 					importee = importee.slice(0, Math.max(0, importee.length - 3))
-					matchedPath = matchPath(`${importee}.ts`)
+					matchedPath =
+						matchPath(`${importee}.ts`) ??
+						matchPath(`${importee}.js`) ??
+						matchPath(importee)
 				} else if (importee.endsWith('.jsx')) {
 					importee = importee.slice(0, Math.max(0, importee.length - 4))
-					matchedPath = matchPath(`${importee}.tsx`)
+					matchedPath =
+						matchPath(`${importee}.tsx`) ??
+						matchPath(`${importee}.jsx`) ??
+						matchPath(importee)
 				} else if (importee.endsWith('.cjs')) {
 					importee = importee.slice(0, Math.max(0, importee.length - 4))
-					matchedPath = matchPath(`${importee}.cts`)
+					matchedPath =
+						matchPath(`${importee}.cts`) ??
+						matchPath(`${importee}.cjs`) ??
+						matchPath(importee)
 				} else if (importee.endsWith('.mjs')) {
 					importee = importee.slice(0, Math.max(0, importee.length - 4))
-					matchedPath = matchPath(`${importee}.mts`)
-				} else {
+					matchedPath =
+						matchPath(`${importee}.mts`) ??
+						matchPath(`${importee}.mjs`) ??
+						matchPath(importee)
+				}
+				// If the import is extension-less, we assume the code is run in a CommonJS environment
+				else {
 					matchedPath = matchPath(importee)
 				}
 
