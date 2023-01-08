@@ -40,6 +40,8 @@ export function workspaceImports() {
 				} else if (importee.endsWith('.mjs')) {
 					importee = importee.slice(0, Math.max(0, importee.length - 4))
 					matchedPath = matchPath(`${importee}.mts`)
+				} else {
+					matchedPath = matchPath(importee)
 				}
 
 				if (matchedPath !== undefined) {
